@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zfi005.escritural.baixas.escrituralbaixas
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: S4D_Hegidio_100
+          url: http://hegidio:44380
+          client: '100'
+        app:
+          name: ZFI005ESCRBAIXA
+          description: Escritural de Baixas
+          package: zfi005
+          transport: S4DK903473
+        exclude:
+          - /test/
