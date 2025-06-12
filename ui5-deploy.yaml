@@ -18,9 +18,9 @@ builder:
           url: http://hegidio:44380
           client: '100'
         app:
-          name: ZFI005ESCRBAIXA
+          name: ZZ1_ESCRBAIXA
           description: Escritural de Baixas
-          package: zfi005
+          package: ZFI005
           transport: S4DK903473
         exclude:
           - /test/

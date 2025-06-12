@@ -105,7 +105,10 @@
             }
         },
         "resources": {
-            "css": []
+            "css": [],
+            "paths": {
+                "sap/nw/core/applogs/lib/reuse": "/sap/bc/ui5_ui5/sap/nw_aps_apl_lib/lib/reuse"
+              }
         },
         "routing": {
             "config": {},
