@@ -15,8 +15,6 @@ server:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
-          #resourceRoots:
-          #  "sap.nw.core.applogs.lib.reuse": "/sap/bc/ui5_ui5/sap/nw_aps_apl_lib/"
         backend:
           - path: /sap
             url: http://hegidio:44380

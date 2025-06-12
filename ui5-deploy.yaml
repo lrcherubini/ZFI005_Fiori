@@ -13,6 +13,7 @@ builder:
     - name: deploy-to-abap
       afterTask: generateCachebusterInfo
       configuration:
+        log: 4
         target:
           destination: S4D_Hegidio_100
           url: http://hegidio:44380

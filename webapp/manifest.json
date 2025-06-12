@@ -73,10 +73,7 @@
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
-                "sap.fe.templates": {},
-                "sap.nw.core.applogs.lib.reuse": {
-                    "lazy": true
-                }
+                "sap.fe.templates": {}
             }
         },
         "contentDensities": {
@@ -105,10 +102,7 @@
             }
         },
         "resources": {
-            "css": [],
-            "paths": {
-                "sap/nw/core/applogs/lib/reuse": "/sap/bc/ui5_ui5/sap/nw_aps_apl_lib/lib/reuse"
-              }
+            "css": []
         },
         "routing": {
             "config": {},
@@ -122,11 +116,6 @@
                     "pattern": "AcctgDocItem({key}):?query:",
                     "name": "AcctgDocItemObjectPage",
                     "target": "AcctgDocItemObjectPage"
-                },
-                {
-                    "name": "AcctgDocItem__LogsObjectPage",
-                    "pattern": "AcctgDocItem({key})/_Logs({_LogsKey}):?query:",
-                    "target": "AcctgDocItem__LogsObjectPage"
                 }
             ],
             "targets": {
@@ -162,56 +151,17 @@
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "contextPath": "/AcctgDocItem",
-                            "navigation": {
-                                "_Logs": {
-                                    "detail": {
-                                        "route": "AcctgDocItem__LogsObjectPage"
-                                    }
-                                }
-                            }
+                            "contextPath": "/AcctgDocItem"
                         }
-                    }
-                },
-                "AcctgDocItem__LogsObjectPage": {
-                    "type": "Component",
-                    "id": "AcctgDocItem__LogsObjectPage",
-                    "name": "sap.fe.templates.ObjectPage",
-                    "options": {
-                        "settings": {
-                            "navigation": {},
-                            "contextPath": "/AcctgDocItem/_Logs",
-                            "content": {
-                                "body": {
-                                    "sections": {
-                                        "logMsgsSection": {
-                                            "template": "zfi005.escritural.baixas.escrituralbaixas.ext.fragment.logMsgsSection",
-                                            "title": "Mensagens",
-                                            "position": {
-                                                "placement": "After",
-                                                "anchor": "idIdent"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "extends": {
-            "extensions": {
-                "sap.ui.controllerExtensions": {
-                    "sap.fe.templates.ObjectPage.ObjectPageController": {
-                        "controllerName": "zfi005.escritural.baixas.escrituralbaixas.ext.controller.LogMsgsSection"
                     }
                 }
             }
         }
     },
     "sap.fiori": {
-        "registrationIds": [],
-        "archeType": "transactional"
+        "archeType": "transactional",
+        "registrationIds": [
+            "ZZ1_ESCRBAIXA_UI5R"
+        ]
     }
 }
