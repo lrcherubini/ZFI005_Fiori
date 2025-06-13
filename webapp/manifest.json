@@ -116,6 +116,11 @@
                     "pattern": "AcctgDocItem({key}):?query:",
                     "name": "AcctgDocItemObjectPage",
                     "target": "AcctgDocItemObjectPage"
+                },
+                {
+                    "name": "AcctgDocItem__LogsObjectPage",
+                    "pattern": "AcctgDocItem({key})/_Logs({_LogsKey}):?query:",
+                    "target": "AcctgDocItem__LogsObjectPage"
                 }
             ],
             "targets": {
@@ -151,7 +156,25 @@
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "contextPath": "/AcctgDocItem"
+                            "contextPath": "/AcctgDocItem",
+                            "navigation": {
+                                "_Logs": {
+                                    "detail": {
+                                        "route": "AcctgDocItem__LogsObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "AcctgDocItem__LogsObjectPage": {
+                    "type": "Component",
+                    "id": "AcctgDocItem__LogsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "navigation": {},
+                            "contextPath": "/AcctgDocItem/_Logs"
                         }
                     }
                 }
