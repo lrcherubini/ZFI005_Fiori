@@ -174,7 +174,21 @@
                     "options": {
                         "settings": {
                             "navigation": {},
-                            "contextPath": "/AcctgDocItem/_Logs"
+                            "contextPath": "/AcctgDocItem/_Logs",
+                            "content": {
+                                "body": {
+                                    "sections": {
+                                        "LogMsgsSection": {
+                                            "template": "zfi005.escritural.baixas.escrituralbaixas.ext.fragment.LogMsgsSection",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "idIdent"
+                                            },
+                                            "title": "Mensagens"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
