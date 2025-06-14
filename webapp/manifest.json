@@ -73,7 +73,10 @@
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
-                "sap.fe.templates": {}
+                "sap.fe.templates": {},
+                "sap.nw.core.applogs.lib.reuse": {
+                    "lazy": true
+                }
             }
         },
         "contentDensities": {
@@ -190,6 +193,21 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "componentUsages": {
+            "ApplicationLogs": {
+                "name": "sap.nw.core.applogs.lib.reuse.applogs",
+                "lazy": true
+            }
+        },
+        "extends": { 
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.fe.templates.ObjectPage.ObjectPageController": {
+                        "controllerName": "zfi005.escritural.baixas.escrituralbaixas.ext.controller.LogMsgsSection"
                     }
                 }
             }
