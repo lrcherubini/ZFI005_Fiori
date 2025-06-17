@@ -37,11 +37,11 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "writeOff-maintain": {
-                    "semanticObject": "writeOff",
+                "WriteOff-maintain": {
+                    "semanticObject": "WriteOff",
                     "action": "maintain",
-                    "title": "{{writeOff-maintain.flpTitle}}",
-                    "subTitle": "{{writeOff-maintain.flpSubtitle}}",
+                    "title": "{{WriteOff-maintain.flpTitle}}",
+                    "subTitle": "{{WriteOff-maintain.flpSubtitle}}",
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
@@ -73,10 +73,7 @@
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
-                "sap.fe.templates": {},
-                "sap.nw.core.applogs.lib.reuse": {
-                    "lazy": true
-                }
+                "sap.fe.templates": {}
             }
         },
         "contentDensities": {
@@ -177,37 +174,8 @@
                     "options": {
                         "settings": {
                             "navigation": {},
-                            "contextPath": "/AcctgDocItem/_Logs",
-                            "content": {
-                                "body": {
-                                    "sections": {
-                                        "LogMsgsSection": {
-                                            "template": "zfi005.escritural.baixas.escrituralbaixas.ext.fragment.LogMsgsSection",
-                                            "position": {
-                                                "placement": "After",
-                                                "anchor": "idIdent"
-                                            },
-                                            "title": "Mensagens"
-                                        }
-                                    }
-                                }
-                            }
+                            "contextPath": "/AcctgDocItem/_Logs"
                         }
-                    }
-                }
-            }
-        },
-        "componentUsages": {
-            "ApplicationLogs": {
-                "name": "sap.nw.core.applogs.lib.reuse.applogs",
-                "lazy": true
-            }
-        },
-        "extends": { 
-            "extensions": {
-                "sap.ui.controllerExtensions": {
-                    "sap.fe.templates.ObjectPage.ObjectPageController": {
-                        "controllerName": "zfi005.escritural.baixas.escrituralbaixas.ext.controller.LogMsgsSection"
                     }
                 }
             }

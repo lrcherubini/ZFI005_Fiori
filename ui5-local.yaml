@@ -13,7 +13,6 @@ framework:
     - name: sap.fe.templates
     - name: sap.ushell
     - name: themelib_sap_horizon
-    - name: sap.nw.core.applogs.lib.reuse
 server:
   customMiddleware:
     - name: fiori-tools-appreload

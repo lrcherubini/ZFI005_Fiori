@@ -339,7 +339,12 @@
                 <Property Name="OriginalTaxBaseAmtInAddlCrcy1" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="variable"/>
                 <Property Name="OriginalTaxBaseAmtInAddlCrcy2" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="variable"/>
                 <Property Name="DocumentReferenceID" Type="Edm.String" Nullable="false" MaxLength="16"/>
+<<<<<<< Updated upstream
                 <Property Name="actionFB09" Type="Edm.Boolean" Nullable="false"/>
+=======
+                <Property Name="fb09Baixa" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="fb09Ref3" Type="Edm.Boolean" Nullable="false"/>
+>>>>>>> Stashed changes
                 <Property Name="__OperationControl" Type="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemOperationControl"/>
                 <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.SAP__Message)" Nullable="false"/>
                 <NavigationProperty Name="_FB09Jobs" Type="Collection(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.JobStatusType)"/>
@@ -436,9 +441,40 @@
                 <Property Name="NumberOfInformationMessages" Type="Edm.String" Nullable="false" MaxLength="6"/>
                 <Property Name="NumberOfStatusMessages" Type="Edm.String" Nullable="false" MaxLength="6"/>
                 <Property Name="Criticality" Type="Edm.Int32" Nullable="false"/>
+<<<<<<< Updated upstream
             </EntityType>
             <ComplexType Name="AcctgDocItemOperationControl">
                 <Property Name="fb09" Type="Edm.Boolean" Nullable="false"/>
+=======
+                <NavigationProperty Name="_ApplLogMessages" Type="Collection(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.LogMessagesType)"/>
+            </EntityType>
+            <EntityType Name="LogMessagesType">
+                <Key>
+                    <PropertyRef Name="LogHandle"/>
+                    <PropertyRef Name="MessageNumber"/>
+                </Key>
+                <Property Name="LogHandle" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="MessageNumber" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="Timestamp" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="DetailLevel" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="250"/>
+                <Property Name="HasLongText" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="HasDetailText" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="ContextField1" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="ContextField2" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="ContextField3" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="ContextField4" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="ContextField5" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="Criticality" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="TypeText" Type="Edm.String" Nullable="false"/>
+                <Property Name="FilterFieldName" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="FilterFieldValue" Type="Edm.String" Nullable="false" MaxLength="100"/>
+            </EntityType>
+            <ComplexType Name="AcctgDocItemOperationControl">
+                <Property Name="fb09Baixa" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="fb09Ref3" Type="Edm.Boolean" Nullable="false"/>
+>>>>>>> Stashed changes
             </ComplexType>
             <ComplexType Name="SAP__Message">
                 <Property Name="code" Type="Edm.String" Nullable="false"/>
@@ -449,7 +485,15 @@
                 <Property Name="numericSeverity" Type="Edm.Byte" Nullable="false"/>
                 <Property Name="longtextUrl" Type="Edm.String"/>
             </ComplexType>
+<<<<<<< Updated upstream
             <Action Name="fb09" EntitySetPath="_it" IsBound="true">
+=======
+            <Action Name="fb09Ref3" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType" Nullable="false"/>
+            </Action>
+            <Action Name="fb09Baixa" EntitySetPath="_it" IsBound="true">
+>>>>>>> Stashed changes
                 <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType" Nullable="false"/>
                 <ReturnType Type="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType" Nullable="false"/>
             </Action>
@@ -459,33 +503,58 @@
                     <NavigationPropertyBinding Path="_Logs" Target="Logs"/>
                 </EntitySet>
                 <EntitySet Name="JobStatus" EntityType="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.JobStatusType"/>
+<<<<<<< Updated upstream
                 <EntitySet Name="Logs" EntityType="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.LogsType"/>
+=======
+                <EntitySet Name="LogMessages" EntityType="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.LogMessagesType"/>
+                <EntitySet Name="Logs" EntityType="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.LogsType">
+                    <NavigationPropertyBinding Path="_ApplLogMessages" Target="LogMessages"/>
+                </EntitySet>
+>>>>>>> Stashed changes
             </EntityContainer>
             <Annotations Target="SAP__self.AcctgDocItemType/CompanyCode">
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Empresa"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Company Code"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/AccountingDocument">
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Lançamento contábil"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Journal Entry"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/FiscalYear">
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__common.IsDigitSequence"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Exercício fiscal"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Fiscal Year"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/AccountingDocumentItem">
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__common.IsDigitSequence"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Item visão lçto."/>
                 <Annotation Term="SAP__common.Heading" String="Item de visão de lançamento"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Item de visão de lançamento de partida individual"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Posting View Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Journal Entry Posting View Item"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/FB08Status">
                 <Annotation Term="SAP__common.Text" Path="FB08StatusText"/>
                 <Annotation Term="SAP__common.IsDigitSequence"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Status do Job Escr."/>
                 <Annotation Term="SAP__common.Heading" String="Status do Job Escritural de Baixa"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Status Proc. Escritural de Baixa"/>
@@ -698,6 +767,203 @@
             <Annotations Target="SAP__self.AcctgDocItemType/GLAccount">
                 <Annotation Term="SAP__common.IsUpperCase"/>
                 <Annotation Term="SAP__common.Label" String="Conta do Razão"/>
+=======
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FB08StatusText">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Short Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Short Text for Fixed Values"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FB09Status">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FB09StatusText">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Short Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Short Text for Fixed Values"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ChartOfAccounts">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Chart of Accounts"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AccountingDocumentItemType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Line Item ID"/>
+                <Annotation Term="SAP__common.Heading" String="LID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Identification of the Line Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ClearingJournalEntryFiscalYear">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Fiscal Year of Clearing Journal Entry"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ClearingJournalEntry">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Clearing Journal Entry"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PostingKey">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Posting Key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FinancialAccountType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Account Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/SpecialGLCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Special G/L"/>
+                <Annotation Term="SAP__common.Heading" String="Special G/L Indicator"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Special G/L Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/SpecialGLTransactionType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sp. G/L Trans.Type"/>
+                <Annotation Term="SAP__common.Heading" String="TT"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Special G/L Transaction Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DebitCreditCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Debit/Credit Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BusinessArea">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Business Area"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PartnerBusinessArea">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Partner Bus. Area"/>
+                <Annotation Term="SAP__common.Heading" String="Partner Business Area"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Partner Business Area"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Code"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax on Sales/Purchases Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxCountry">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Ctry/Reg."/>
+                <Annotation Term="SAP__common.Heading" String="Tax Country/Region"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Reporting Country/Region"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/WithholdingTaxCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Withholding Tax Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Type"/>
+                <Annotation Term="SAP__common.Heading" String="Typ"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxItemGroup">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Group"/>
+                <Annotation Term="SAP__common.Heading" String="GrI"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Group Indicator for Tax Line Items"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TransactionTypeDetermination">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Transaction Key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PartnerCompany">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Trading Partner"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Company ID of Trading Partner"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FinancialTransactionType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Financial Transaction Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CorporateGroupAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Corporate Group Account"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PlanningLevel">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Planning Level"/>
+                <Annotation Term="SAP__common.Heading" String="Level"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ControllingArea">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Controlling Area"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CostCenter">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Cost Center"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OrderID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Order ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BillingDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Billing Document"/>
+                <Annotation Term="SAP__common.Heading" String="Bill. Doc."/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/SalesDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sales Document"/>
+                <Annotation Term="SAP__common.Heading" String="Sales Doc."/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/SalesDocumentItem">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Sales Document Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ScheduleLine">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Schedule Line"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ServiceDocumentType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Service Doc. Type"/>
+                <Annotation Term="SAP__common.Heading" String="Service Document Type"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Service Document Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ServiceDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Service Document"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Service Document ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ServiceDocumentItem">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Service Doc. Item"/>
+                <Annotation Term="SAP__common.Heading" String="Service Document Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Service Document Item ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/MasterFixedAsset">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Fixed Asset"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FixedAsset">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Asset Subnumber"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AssetTransactionType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Ast Transaction Type"/>
+                <Annotation Term="SAP__common.Heading" String="Asset Transaction Type"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Asset Transaction Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PersonnelNumber">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Personnel Number"/>
+                <Annotation Term="SAP__common.Heading" String="Pers.No."/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsOpenItemManaged">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Open Item Management"/>
+                <Annotation Term="SAP__common.Heading" String="Managed on an Open Item Basis"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Managed on an Open Item Basis"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OperationalGLAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Operational G/L Acct"/>
+                <Annotation Term="SAP__common.Heading" String="Operational G/L Account"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Operational General Ledger Account"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/GLAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="G/L Account"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/Customer">
                 <Annotation Term="SAP__common.Text" Path="CustomerName"/>
@@ -708,6 +974,7 @@
                         <String>../../../../srvd_f4/sap/i_customer/0001;ps='srvd-zui_fi_escr_baixa-0001';va='com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.et-zc_operacctgdocitemwriteoff.customer'/$metadata</String>
                     </Collection>
                 </Annotation>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Cliente"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Nº cliente"/>
             </Annotations>
@@ -942,6 +1209,234 @@
             <Annotations Target="SAP__self.AcctgDocItemType/ProfitCenter">
                 <Annotation Term="SAP__common.IsUpperCase"/>
                 <Annotation Term="SAP__common.Label" String="Centro de lucro"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Customer"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Customer Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CustomerName">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Name of Customer"/>
+                <Annotation Term="SAP__common.Heading" String="Customer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Supplier">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Supplier"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BranchAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Branch Account"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ProfitLossAccountType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Profit Loss Account Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentTerms">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Payment Terms"/>
+                <Annotation Term="SAP__common.Heading" String="PayT"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Terms of Payment Key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentMethod">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Payment Method"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentBlockingReason">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Payment Blocking Reason"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FixedCashDiscount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Fixed Cash Discount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/HouseBank">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="House Bank"/>
+                <Annotation Term="SAP__common.Heading" String="House Bk"/>
+                <Annotation Term="SAP__common.QuickInfo" String="House Bank Key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BPBankAccountInternalID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="BP Bank Account"/>
+                <Annotation Term="SAP__common.Heading" String="BPBkAcc"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Business Partner Bank Account Internal ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxDistributionCode1">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Distr. Code 1"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Distribution Code 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Code 1 for Distribution"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxDistributionCode2">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Distr. Code 2"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Distribution Code 2"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Code 2 for Distribution"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxDistributionCode3">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Distr. Code 3"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Distribution Code 3"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Code 3 for Distribution"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/InvoiceReference">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Invoice Reference"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/InvoiceReferenceFiscalYear">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Invoice Reference Fiscal Year"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/InvoiceItemReference">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Invoice Item Reference"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FollowOnDocumentType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Follow-On Doc.Type"/>
+                <Annotation Term="SAP__common.Heading" String="Foll."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Follow-On Document Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/StateCentralBankPaymentReason">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="SCB Indicator"/>
+                <Annotation Term="SAP__common.Heading" String="CBnkIn"/>
+                <Annotation Term="SAP__common.QuickInfo" String="State Central Bank Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/SupplyingCountry">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Supplying Ctry/Reg."/>
+                <Annotation Term="SAP__common.Heading" String="Supplying Country/Region"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Supplying Country/Region"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/InvoiceList">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Invoice List"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BillOfExchangeUsageDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Bill of Exchange Usage Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BillOfExchangeUsage">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Bill/Exchange Usage"/>
+                <Annotation Term="SAP__common.Heading" String="BoE"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Bill of Exchange Usage Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ZZBoEPayRequest">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="BoE Payment Request"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Document Number of the Bill of Exchange Payment Request"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ZZBoEFiscalYear">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Fisc. Year"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Fiscal Year of the Bill of Exchange Payment Request Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ZZBoECompanyCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Company Code"/>
+                <Annotation Term="SAP__common.Heading" String="CoCd"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Company Code in Which Bill of Exch.Payment Request Is Posted"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DunningKey">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Dunning Key"/>
+                <Annotation Term="SAP__common.Heading" String="DKey"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DunningBlockingReason">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Dunning Blocking Reason"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DunningLevel">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Dunning Level"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DunningArea">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Dunning Area"/>
+                <Annotation Term="SAP__common.Heading" String="DArea"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaytSlipWthRefSubscriber">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="ISR Subscriber Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaytSlipWthRefReference">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="ISR Reference Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaytSlipWthRefCheckDigit">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="ISR Check Digit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/WithholdingTaxCertificate">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="WHT Certificate"/>
+                <Annotation Term="SAP__common.Heading" String="Withholding Tax Certificate"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Withholding Tax Certificate"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Product">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Product"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Product Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Plant">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Plant"/>
+                <Annotation Term="SAP__common.Heading" String="Plnt"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PurchasingDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PurchasingDocumentItem">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Doc. Item"/>
+                <Annotation Term="SAP__common.Heading" String="Purchasing Document Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AccountAssignmentNumber">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Account Assgmt No."/>
+                <Annotation Term="SAP__common.Heading" String="SAA"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Sequential Number of Account Assignment"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/MaterialPriceControl">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Material Price Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Material Price Control Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ValuationArea">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Valuation Area"/>
+                <Annotation Term="SAP__common.Heading" String="ValA"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/InventoryValuationType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Valuation Type"/>
+                <Annotation Term="SAP__common.Heading" String="Val. Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/VATRegistration">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="VAT Registration"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DelivOfGoodsDestCountry">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="C/R of Destination"/>
+                <Annotation Term="SAP__common.Heading" String="Country/Region of Destination"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Country/Region of Destination for Delivery of Goods"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DelivOfGoodsOriginCountry">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Delivery Of Goods Origin Country/Region"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentDifferenceReason">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Payment Difference Reason"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ProfitCenter">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Profit Center"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/JointVenture">
                 <Annotation Term="SAP__common.IsUpperCase"/>
@@ -950,6 +1445,7 @@
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/JointVentureCostRecoveryCode">
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Cód.recuperação"/>
                 <Annotation Term="SAP__common.Heading" String="CR"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Código de recuperação"/>
@@ -1296,6 +1792,333 @@
                 <Annotation Term="SAP__common.Label" String="Parceiro per.orçmto."/>
                 <Annotation Term="SAP__common.Heading" String="Parc.PerOrç."/>
                 <Annotation Term="SAP__common.QuickInfo" String="AdO: parceiro período de orçamento"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Recovery Indicator"/>
+                <Annotation Term="SAP__common.Heading" String="RI"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/JointVentureEquityGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Joint Venture Equity Group"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/JointVenturePartner">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Joint Venture Partner"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TreasuryContractType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Treasury Contract Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AssetContract">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Asset Contract"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashFlowType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Flow Type"/>
+                <Annotation Term="SAP__common.Heading" String="Flow"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxJurisdiction">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Jurisdiction"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/REInternalFinNumber">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Real Estate Key"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Internal Key of Real Estate Object (FI)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CommitmentItemShortID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Commitment Item Short ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Commitment Item ShortID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CostObject">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Cost Object"/>
+                <Annotation Term="SAP__common.Heading" String="CostObject"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ProjectNetwork">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Network"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Network Number for Account Assignment"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OrderInternalBillOfOperations">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Order Internal Bill of Operations"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Order Internal Bill of Operations ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OrderIntBillOfOperationsItem">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Order Internal Bill of Operations Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/WBSElementInternalID">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="WBS Element Internal ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ProfitabilitySegment_2">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Profitability Segment"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/JointVentureBillingType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Joint Venture Billing Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/JointVentureEquityType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Joint Venture Equity Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CostOriginGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Origin Group"/>
+                <Annotation Term="SAP__common.Heading" String="OrGp"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Origin Group as Subdivision of Cost Element"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CompanyCodeCurrencyDetnMethod">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Co Crcy Detn Meth"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Company Code Currency Determination Method"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentMethodSupplement">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Payt Method Suplmnt"/>
+                <Annotation Term="SAP__common.Heading" String="PmtMthSu"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Payment Method Supplement"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AlternativeGLAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Altern. G/L Account"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Alternative G/L Account Number In Company Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FundsCenter">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Funds Center"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Funds Management Center"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Fund">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Fund"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxCompanyCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Company Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PartnerProfitCenter">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Partner Profit Center"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Reference1IDByBusinessPartner">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Reference 1 ID By Business Partner"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ID of Reference 1 by Business Partner"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Reference2IDByBusinessPartner">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Reference 2 ID By Business Partner"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ID of Reference 2 by Business Partner"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/EarmarkedFundsDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Earmarked Funds"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Document Number for Earmarked Funds"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/EarmarkedFundsDocumentItem">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Document Item"/>
+                <Annotation Term="SAP__common.Heading" String="Itm"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Earmarked Funds: Document Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentCardItem">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Payment Card Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentCardPaymentSettlement">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Payment Card Payment Settlement"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CreditControlArea">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Credit Control Area"/>
+                <Annotation Term="SAP__common.Heading" String="CCAr"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AlternativePayeePayer">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Alternative Payee/Payer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Reference3IDByBusinessPartner">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Reference 3 ID By Business Partner"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ID of Reference 3 by Business Partner"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DataExchangeInstruction1">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Data Exchange Instruction 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DataExchangeInstruction2">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Data Exchange Instruction 2"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DataExchangeInstruction3">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Data Exchange Instruction 3"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DataExchangeInstruction4">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Data Exchange Instruction 4"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Region">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Region"/>
+                <Annotation Term="SAP__common.Heading" String="Rg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Region (State, Province, County)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentReference">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Payment Reference"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BusinessPlace">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Business Place"/>
+                <Annotation Term="SAP__common.Heading" String="BusP"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxSection">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tax Section"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CostCtrActivityType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Activity Type"/>
+                <Annotation Term="SAP__common.Heading" String="ActTyp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AcctsReceivablePledgingCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Accounts Receivable Pledging Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BusinessProcess">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Business Process"/>
+                <Annotation Term="SAP__common.Heading" String="Bus. Process"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/GrantID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Grant"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FunctionalArea">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Functional Area"/>
+                <Annotation Term="SAP__common.Heading" String="FA"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FundedProgram">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Funded Program"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/LedgerGLLineItem">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Journal Entry Item"/>
+                <Annotation Term="SAP__common.Heading" String="General Ledger Journal Entry Line Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="General Ledger Journal Entry Line Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Segment">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Segment"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Segment for Segmental Reporting"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PartnerSegment">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Partner Segment"/>
+                <Annotation Term="SAP__common.Heading" String="Ptnr Segm."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Partner Segment for Segmental Reporting"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PartnerFunctionalArea">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Partner Func. Area"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Partner Functional Area"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/HouseBankAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="House Bank Account"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CostElement">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Cost Element"/>
+                <Annotation Term="SAP__common.Heading" String="Cost Elem."/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxItemAcctgDocItemRef">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Tax doc. item number"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax document item number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentServiceProvider">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Payt Srvc Provider"/>
+                <Annotation Term="SAP__common.Heading" String="Payment Service Provider"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Payment Service Provider"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/SEPAMandate">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="SEPA Mandate"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Unique Reference to Mandate for each Payee"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ReferenceDocumentType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Reference Document Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OriginalReferenceDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Original Reference Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ReferenceDocumentLogicalSystem">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Ref. Doc. Lgcl Syst."/>
+                <Annotation Term="SAP__common.Heading" String="Reference Document Logical System"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Logical System of Reference Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AccountingDocumentItemRef">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Journal Entry Line Item Reference"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FiscalPeriod">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Fiscal Period"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AccountingDocumentCategory">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Journal Entry Category"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AccountingDocumentType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Journal Entry Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OffsettingAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Offsetting Account"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OffsettingAccountType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Offset Acct Type"/>
+                <Annotation Term="SAP__common.Heading" String="OffAct"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Offsetting Account Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OffsettingChartOfAccounts">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Offsetting Chart of Accounts"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PartnerFund">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Partner Fund"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PartnerGrant">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Partner Grant"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BudgetPeriod">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Budget Period"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PartnerBudgetPeriod">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Par. Budget Per."/>
+                <Annotation Term="SAP__common.Heading" String="P.Bud.Per."/>
+                <Annotation Term="SAP__common.QuickInfo" String="FM: Partner Budget Period"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/BranchCode">
                 <Annotation Term="SAP__common.IsUpperCase"/>
@@ -1303,6 +2126,7 @@
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/PaymentReason">
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Motivo do pagamento"/>
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/CashLedgerCompanyCode">
@@ -1352,10 +2176,58 @@
             <Annotations Target="SAP__self.AcctgDocItemType/CustomerSupplierIndustry">
                 <Annotation Term="SAP__common.IsUpperCase"/>
                 <Annotation Term="SAP__common.Label" String="Setor industrial fornecedor cliente"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Payment Reason"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashLedgerCompanyCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Cash Origin CoCode"/>
+                <Annotation Term="SAP__common.Heading" String="Cash Origin Company Code"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Cash Origin Company Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashLedgerAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Cash Origin Account"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PubSecBudgetAccountCoCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Company Code for Budget Account"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Budget Account Company Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PubSecBudgetAccount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Budget Account"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FinancialServicesProductGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Financial Services Product Group"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FinancialServicesBranch">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Financial Services Branch"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/FinancialDataSource">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Financial Data Source"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CustomerGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Customer Group"/>
+                <Annotation Term="SAP__common.Heading" String="CGrp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CustomerSupplierCountry">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Customer or Supplier Country/Region"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CustomerSupplierIndustry">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Customer Supplier Industry"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/CompanyCodeCurrency">
                 <Annotation Term="SAP__common.IsCurrency"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Moeda da empresa"/>
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/AmountInCompanyCodeCurrency">
@@ -1363,10 +2235,18 @@
                 <Annotation Term="SAP__common.Label" String="Mont.moeda empresa"/>
                 <Annotation Term="SAP__common.Heading" String="Montante em moeda da empresa"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Montante em moeda da empresa"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Company Code Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AmountInCompanyCodeCurrency">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Amount in Company Code Currency"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/FunctionalCurrency">
                 <Annotation Term="SAP__common.IsCurrency"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Moeda funcional"/>
                 <Annotation Term="SAP__common.Heading" String="MdFnc."/>
             </Annotations>
@@ -1426,10 +2306,72 @@
                 <Annotation Term="SAP__common.Label" String="Mont.fat.moeda empr."/>
                 <Annotation Term="SAP__common.Heading" String="Montante fatura na moeda empresa"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Montante da fatura na moeda da empresa"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Functional Currency"/>
+                <Annotation Term="SAP__common.Heading" String="FuCrcy"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AmountInFunctionalCurrency">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="FunctionalCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Amount in Functional Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxAmountInCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tax Amount in Company Code Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Signed Tax Amount in Company Code Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxBaseAmountInCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="TxBaseAmt CoCodeCrcy"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Base Amount in CoCode Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Base Amount in Company Code Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ValuationDiffAmtInCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Valuation Difference Amount In CC Crcy"/>
+                <Annotation Term="SAP__common.Heading" String="Valuation Difference Amount In Company Code Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Valuation Difference Amount In Company Code Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscountAmtInCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="CashD Amt in CC Crcy"/>
+                <Annotation Term="SAP__common.Heading" String="Cash Discount Amount in Company Code Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Cash Discount Amount in Company Code Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxBrkdwnAmount1InCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tax Breakdown Amnt in CoCode Crcy (1)"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Breakdown Amount in Company Code Currency (1)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Breakdown Amount in Company Code Currency (1)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxBrkdwnAmount2InCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tax Breakdown Amnt in CoCode Crcy (2)"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Breakdown Amount in Company Code Currency (2)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Breakdown Amount in Company Code Currency (2)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxBrkdwnAmount3InCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tax Breakdown Amnt in CoCode Crcy (3)"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Breakdown Amount in Company Code Currency (3)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Breakdown Amount in Company Code Currency (3)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/NonDcblTaxAmountInCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Non Deductible Tax Amount In CoCode Crcy"/>
+                <Annotation Term="SAP__common.Heading" String="Non Deductible Tax Amount In Company Code Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Non Deductible Tax Amount In Company Code Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/InvoiceAmtInCoCodeCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CompanyCodeCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Invc.Amt CoCode Crcy"/>
+                <Annotation Term="SAP__common.Heading" String="Invoice Amount in CoCode Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Invoice Amount in Company Code Currency"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/TransactionCurrency">
                 <Annotation Term="SAP__common.IsCurrency"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Moeda da transação"/>
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/AmountInTransactionCurrency">
@@ -1523,10 +2465,103 @@
                 <Annotation Term="SAP__common.Label" String="Mont.fat.moeda estr."/>
                 <Annotation Term="SAP__common.Heading" String="Mont.fatura em moeda estrangeira"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Montante da fatura em moeda estrangeira"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Transaction Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AmountInTransactionCurrency">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Amount in Transaction Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OriginalTaxBaseAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Origl Tax Base Amt"/>
+                <Annotation Term="SAP__common.Heading" String="Original Tax Base Amount"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Original Tax Base Amount in Transaction Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tax Amount"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Amount in Transaction Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxBaseAmountInTransCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tx Bse Amt TransCrcy"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Base Amount in Trans. Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Base Amount in Transaction Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/WithholdingTaxBaseAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Withholding T.B. Amt"/>
+                <Annotation Term="SAP__common.Heading" String="Withholding Tax Base Amount"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Withholding Tax Base Amount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PlannedAmtInTransactionCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Plnd Amt Trans. Crcy"/>
+                <Annotation Term="SAP__common.Heading" String="Planned Amt in Transaction Crcy"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Planned Amount in Transaction Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscountBaseAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Cash Dscnt Base Amt"/>
+                <Annotation Term="SAP__common.Heading" String="Cash Discount Base Amount"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Cash Discount Base Amount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscountAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Cash Discount Amount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/NetPaymentAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Net Payment Amount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxBrkdwnAmount1InTransCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tax Breakdwn Amnt in Trnsaction Crcy (1)"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Breakdown Amount in Transaction Currency (1)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Breakdown Amount in Transaction Currency (1)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxBrkdwnAmount2InTransCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tax Breakdwn Amnt in Trnsaction Crcy (2)"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Breakdown Amount in Transaction Currency (2)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Breakdown Amount in Transaction Currency (2)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxBrkdwnAmount3InTransCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Tax Breakdwn Amnt in Trnsaction Crcy (3)"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Breakdown Amount in Transaction Currency (3)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tax Breakdown Amount in Transaction Currency (3)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/WithholdingTaxAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Withholding Tax Amt"/>
+                <Annotation Term="SAP__common.Heading" String="Withholding Tax Amount"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Withholding Tax Amount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/WithholdingTaxExemptionAmt">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Withholding T-E Amt"/>
+                <Annotation Term="SAP__common.Heading" String="Withholding Tax-Exemption Amount"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Withholding Tax-Exemption Amount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/NonDcblTaxAmountInTransCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Non Deductible Tax Amount In Trans. Crcy"/>
+                <Annotation Term="SAP__common.Heading" String="Non Deductible Tax Amount In Transaction Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Non Deductible Tax Amount In Transaction Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/InvoiceAmountInFrgnCurrency">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Invc. Amt Frgn Crcy"/>
+                <Annotation Term="SAP__common.Heading" String="Invoice Amount in Foreign Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Invoice Amount in Foreign Currency"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/BalanceTransactionCurrency">
                 <Annotation Term="SAP__common.IsCurrency"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Moeda trans.saldo"/>
                 <Annotation Term="SAP__common.Heading" String="Moeda da transação de saldo"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Moeda da transação de saldo"/>
@@ -1536,10 +2571,18 @@
                 <Annotation Term="SAP__common.Label" String="Mont.na MdaTransSld."/>
                 <Annotation Term="SAP__common.Heading" String="Montante na moeda de transação do saldo"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Montante na moeda de transação do saldo"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Balance Transaction Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AmountInBalanceTransacCrcy">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="BalanceTransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Amount in Balance Transaction Currency"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/AdditionalCurrency1">
                 <Annotation Term="SAP__common.IsCurrency"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Moeda adicional 1"/>
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/ValuationDiffAmtInAddlCrcy1">
@@ -1555,10 +2598,30 @@
             <Annotations Target="SAP__self.AcctgDocItemType/TaxAmountInAdditionalCurrency1">
                 <Annotation Term="SAP__measures.ISOCurrency" Path="AdditionalCurrency1"/>
                 <Annotation Term="SAP__common.Label" String="Montante de imposto em moeda adicional1"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Additional Crcy 1"/>
+                <Annotation Term="SAP__common.Heading" String="Additional Currency 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Additional Currency 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ValuationDiffAmtInAddlCrcy1">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="AdditionalCurrency1"/>
+                <Annotation Term="SAP__common.Label" String="Val. Diff. AddlCrcy1"/>
+                <Annotation Term="SAP__common.Heading" String="Valuation Diff. Amt In Addl Currency 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Valuation Difference Amount in Additional Currency 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AmountInAdditionalCurrency1">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="AdditionalCurrency1"/>
+                <Annotation Term="SAP__common.Label" String="Amount in Additional Currency 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxAmountInAdditionalCurrency1">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="AdditionalCurrency1"/>
+                <Annotation Term="SAP__common.Label" String="Tax Amount in Additional Currency1"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/AdditionalCurrency2">
                 <Annotation Term="SAP__common.IsCurrency"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Moeda adicional 2"/>
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/AmountInAdditionalCurrency2">
@@ -1574,10 +2637,30 @@
                 <Annotation Term="SAP__common.Label" String="Dif.aval.moeda adic2"/>
                 <Annotation Term="SAP__common.Heading" String="Mont.dif.avaliação em moeda adicional 1"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Montante de diferença de avaliação em moeda adicional 2"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Additional Crcy 2"/>
+                <Annotation Term="SAP__common.Heading" String="Additional Currency 2"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Additional Currency 2"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AmountInAdditionalCurrency2">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="AdditionalCurrency2"/>
+                <Annotation Term="SAP__common.Label" String="Amount in Additional Currency 2"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxAmountInAdditionalCurrency2">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="AdditionalCurrency2"/>
+                <Annotation Term="SAP__common.Label" String="Tax Amount in Additional Currency2"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ValuationDiffAmtInAddlCrcy2">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="AdditionalCurrency2"/>
+                <Annotation Term="SAP__common.Label" String="Val. Diff. AddlCrcy2"/>
+                <Annotation Term="SAP__common.Heading" String="Valuation Diff. Amt In Addl Currency 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Valuation Difference Amount in Additional Currency 2"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/PaymentCurrency">
                 <Annotation Term="SAP__common.IsCurrency"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Moeda pgto.automát."/>
                 <Annotation Term="SAP__common.Heading" String="Moeda de pagamento automático"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Moeda para pagamento automático"/>
@@ -1587,10 +2670,20 @@
                 <Annotation Term="SAP__common.Label" String="Montante em MP"/>
                 <Annotation Term="SAP__common.Heading" String="Montante na moeda de pagamento"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Montante na moeda de pagamento"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Autom. Payt. Crcy."/>
+                <Annotation Term="SAP__common.Heading" String="Automatic Payment Currency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Currency for Automatic Payment"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AmountInPaymentCurrency">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="PaymentCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Amount in Payment Currency"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/CreditControlAreaCurrency">
                 <Annotation Term="SAP__common.IsCurrency"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Moeda da área de controle de créditos"/>
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/HedgedAmount">
@@ -1631,6 +2724,45 @@
                 <Annotation Term="SAP__common.Label" String="Qtd.unidade preço material"/>
                 <Annotation Term="SAP__common.Heading" String="Quantidade da unidade de preço do material"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Quantidade da unidade de preço do material"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Credit Control Area Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/HedgedAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CreditControlAreaCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Hedged Amount"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Credit Management: Hedged Amount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/BaseUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Base Unit of Measure"/>
+                <Annotation Term="SAP__common.Heading" String="BUn"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/Quantity">
+                <Annotation Term="SAP__measures.Unit" Path="BaseUnit"/>
+                <Annotation Term="SAP__common.Label" String="Quantity"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/GoodsMovementEntryUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Unit of Entry"/>
+                <Annotation Term="SAP__common.Heading" String="EUn"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Unit of entry"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/QuantityInEntryUnit">
+                <Annotation Term="SAP__measures.Unit" Path="GoodsMovementEntryUnit"/>
+                <Annotation Term="SAP__common.Label" String="Quantity in Entry Unit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PurchasingDocumentPriceUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Document Price Unit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PurchaseOrderQty">
+                <Annotation Term="SAP__measures.Unit" Path="PurchasingDocumentPriceUnit"/>
+                <Annotation Term="SAP__common.Label" String="Purchase Order Quantity"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/MaterialPriceUnitQty">
+                <Annotation Term="SAP__measures.Unit" Path="BaseUnit"/>
+                <Annotation Term="SAP__common.Label" String="Material Price Unit Quantity"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/IN_GSTPartner">
                 <Annotation Term="SAP__common.IsUpperCase"/>
@@ -1656,7 +2788,11 @@
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/DocumentReferenceID">
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="ID de referência de documento"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Document Reference ID"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType/__OperationControl">
                 <Annotation Term="SAP__core.Computed"/>
@@ -1736,8 +2872,16 @@
                     <Collection/>
                 </Annotation>
             </Annotations>
+<<<<<<< Updated upstream
             <Annotations Target="SAP__self.fb09(SAP__self.AcctgDocItemType)">
                 <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/fb09"/>
+=======
+            <Annotations Target="SAP__self.fb09Ref3(SAP__self.AcctgDocItemType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/fb09Ref3"/>
+            </Annotations>
+            <Annotations Target="SAP__self.fb09Baixa(SAP__self.AcctgDocItemType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/fb09Baixa"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.AcctgDocItemType">
                 <Annotation Term="SAP__common.Label" String="Escritural de Baixa"/>
@@ -1749,6 +2893,7 @@
                         <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithIcon"/>
                     </Record>
                 </Annotation>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__UI.HeaderFacets">
                     <Collection>
                         <Record Type="SAP__UI.ReferenceFacet">
@@ -1757,6 +2902,8 @@
                         </Record>
                     </Collection>
                 </Annotation>
+=======
+>>>>>>> Stashed changes
                 <Annotation Term="SAP__UI.Facets">
                     <Collection>
                         <Record Type="SAP__UI.ReferenceFacet">
@@ -1791,6 +2938,17 @@
                         </Record>
                     </Collection>
                 </Annotation>
+<<<<<<< Updated upstream
+=======
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="idStatusHeader"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#FB09Status"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+>>>>>>> Stashed changes
                 <Annotation Term="SAP__UI.FieldGroup" Qualifier="FB09">
                     <Record>
                         <PropertyValue Property="Data">
@@ -1908,8 +3066,18 @@
                             <PropertyValue Property="Value" Path="DocumentItemText"/>
                         </Record>
                         <Record Type="SAP__UI.DataFieldForAction">
+<<<<<<< Updated upstream
                             <PropertyValue Property="Label" String="Baixar"/>
                             <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.fb09(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType)"/>
+=======
+                            <PropertyValue Property="Label" String="Limpar Ref. 3"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.fb09Ref3(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Baixar"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.fb09Baixa(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType)"/>
+>>>>>>> Stashed changes
                             <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
                         </Record>
                     </Collection>
@@ -1987,8 +3155,18 @@
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="SAP__UI.DataFieldForAction">
+<<<<<<< Updated upstream
                             <PropertyValue Property="Label" String="Baixar"/>
                             <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.fb09(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType)"/>
+=======
+                            <PropertyValue Property="Label" String="Limpar Ref. 3"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.fb09Ref3(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Baixar"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.fb09Baixa(com.sap.gateway.srvd.zui_fi_escr_baixa.v0001.AcctgDocItemType)"/>
+>>>>>>> Stashed changes
                             <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
                         </Record>
                     </Collection>
@@ -2079,6 +3257,7 @@
             <Annotations Target="SAP__self.JobStatusType/ApplicationJobName">
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Nome do job"/>
                 <Annotation Term="SAP__common.Heading" String="Nome de um job em background"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Nome de um job em background"/>
@@ -2156,10 +3335,89 @@
                 <Annotation Term="SAP__common.IsUpperCase"/>
                 <Annotation Term="SAP__common.Label" String="ModoEmerg."/>
                 <Annotation Term="SAP__common.QuickInfo" String="Identificação de jobs em modo de emergência (conteúdo 'X')"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Job Name"/>
+                <Annotation Term="SAP__common.Heading" String="Background Job Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Background Job Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ApplicationJob">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Job No."/>
+                <Annotation Term="SAP__common.Heading" String="Batch Job ID Number"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Job ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/JobGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Job group"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Summary of jobs for a group"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/InternalReport">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Report"/>
+                <Annotation Term="SAP__common.Heading" String="Name of internal report"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Name of internal report for batch job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ScheduledByUser">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Job scheduler"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Initiator of job/step scheduling"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/LastChangeUser">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Last job change by"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Last job change made by"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ReleaseUser">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="User that released scheduled batch job"/>
+                <Annotation Term="SAP__common.Heading" String="User"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/PeriodicJobMinutes">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Periodic job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Duration period (in minutes) for a batch job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/PeriodicJobHours">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Periodic job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Duration period (in hours) for a batch job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/PeriodicJobDays">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Periodic job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Duration (in days) of DBA action"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/PeriodicJobWeeks">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Periodic job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Duration period (in weeks) for a batch job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/PeriodicJobMonths">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Periodic job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Duration period (in months) for a batch job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/IsPeriodicJob">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Periodic job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Periodic Jobs Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/DeleteJobFlag">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Delete Job"/>
+                <Annotation Term="SAP__common.Heading" String="Delete"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Job deletion indicator after processing"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/EmergencyMode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Emergency"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Emergency Job operation indicator (content 'X')"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.JobStatusType/Status">
                 <Annotation Term="SAP__common.Text" Path="StatusText"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Status job"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Estado de job em background"/>
             </Annotations>
@@ -2228,6 +3486,74 @@
                 <Annotation Term="SAP__common.IsUpperCase"/>
                 <Annotation Term="SAP__common.Label" String="Nome grp.servidores"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Nome de grupo de servidores processamento em background"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Job status"/>
+                <Annotation Term="SAP__common.QuickInfo" String="State of Background Job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/IsNewJobID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="New job ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="New job ID creation flag"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/BackgroundUser">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Background User"/>
+                <Annotation Term="SAP__common.Heading" String="Background User for Authorization Check"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Background User Name for Authorization Check"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/JobLogName">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="TemSe object name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/EventID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Event"/>
+                <Annotation Term="SAP__common.Heading" String="Background Processing Event"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Background Processing Event"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/JobClass">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Job class"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Job classification"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/EventCount">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Event number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/JobStatusCheck">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Job status check"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Job status check indicator for subsequent job start"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/CalendarID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Calendar"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Factory calendar ID for background processing"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/PeriodicBehavior">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Behavior"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Period behavior of jobs on non-workdays"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/RecoverLogicalSystem">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Logical system"/>
+                <Annotation Term="SAP__common.Heading" String="Log.System"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/RecoverObjectType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Object Type"/>
+                <Annotation Term="SAP__common.Heading" String="Obj. Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/RecoverDescription">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Describe flag"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/TargetServerGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Server Group Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Server Group Name Background Processing"/>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.JobStatusType">
                 <Annotation Term="SAP__common.Label" String="Job Status"/>
@@ -2239,6 +3565,7 @@
                         <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithIcon"/>
                     </Record>
                 </Annotation>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__UI.HeaderFacets">
                     <Collection>
                         <Record Type="SAP__UI.ReferenceFacet">
@@ -2247,6 +3574,8 @@
                         </Record>
                     </Collection>
                 </Annotation>
+=======
+>>>>>>> Stashed changes
                 <Annotation Term="SAP__UI.Facets">
                     <Collection>
                         <Record Type="SAP__UI.ReferenceFacet">
@@ -2256,6 +3585,17 @@
                         </Record>
                     </Collection>
                 </Annotation>
+<<<<<<< Updated upstream
+=======
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="idStatusHeader"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#Status"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+>>>>>>> Stashed changes
                 <Annotation Term="SAP__UI.HeaderInfo">
                     <Record>
                         <PropertyValue Property="TypeName" String="Job"/>
@@ -2383,6 +3723,7 @@
             </Annotations>
             <Annotations Target="SAP__self.LogsType/ApplicationLogObject">
                 <Annotation Term="SAP__common.IsUpperCase"/>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__common.Label" String="Objeto"/>
                 <Annotation Term="SAP__common.Heading" String="Obj."/>
                 <Annotation Term="SAP__common.QuickInfo" String="Log de aplicação: nome do objeto (sigla de aplicação)"/>
@@ -2444,6 +3785,114 @@
                 <Annotation Term="SAP__common.Label" String="Mensagens de êxito"/>
                 <Annotation Term="SAP__common.Heading" String="Êxito"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Log de aplicação: nº de mensagens status"/>
+=======
+                <Annotation Term="SAP__common.Label" String="Object"/>
+                <Annotation Term="SAP__common.Heading" String="Obj."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application log: Object name (Application code)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogSubObject">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Subobject"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Subobject"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogUser">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="User"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application log: user name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogChangedUser">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Changed by"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: User that changed the log"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/LogIsNotDeletedBeforeExpiry">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Keep until expiry"/>
+                <Annotation Term="SAP__common.Heading" String="KtE"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Keep log until expiry"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/NumberOfAllMessages">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Total Messages"/>
+                <Annotation Term="SAP__common.Heading" String="Total"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Total Number of Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/NumberOfAbortMessages">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Termination Messages"/>
+                <Annotation Term="SAP__common.Heading" String="Cancel"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Number of A Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/NumberOfErrorMessages">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="No. of Error Msgs"/>
+                <Annotation Term="SAP__common.Heading" String="Errors"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Number of E Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/NumberOfWarningMessages">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Number of Warnings"/>
+                <Annotation Term="SAP__common.Heading" String="Warngs"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Number of W Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/NumberOfInformationMessages">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="I Messages"/>
+                <Annotation Term="SAP__common.Heading" String="I Msgs"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Number of I Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/NumberOfStatusMessages">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Success Messages"/>
+                <Annotation Term="SAP__common.Heading" String="Succss"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Number of S Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Logs">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_ApplLogMessages"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+>>>>>>> Stashed changes
             </Annotations>
             <Annotations Target="SAP__self.LogsType">
                 <Annotation Term="SAP__common.Label" String="Logs SLG1"/>
@@ -2455,6 +3904,7 @@
                         <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithIcon"/>
                     </Record>
                 </Annotation>
+<<<<<<< Updated upstream
                 <Annotation Term="SAP__UI.HeaderFacets">
                     <Collection>
                         <Record Type="SAP__UI.ReferenceFacet">
@@ -2463,6 +3913,8 @@
                         </Record>
                     </Collection>
                 </Annotation>
+=======
+>>>>>>> Stashed changes
                 <Annotation Term="SAP__UI.Facets">
                     <Collection>
                         <Record Type="SAP__UI.ReferenceFacet">
@@ -2470,6 +3922,22 @@
                             <PropertyValue Property="ID" String="idIdent"/>
                             <PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
                         </Record>
+<<<<<<< Updated upstream
+=======
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Mensagens"/>
+                            <PropertyValue Property="ID" String="idMsgs"/>
+                            <PropertyValue Property="Target" AnnotationPath="_ApplLogMessages/@SAP__UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="idStatusHeader"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#Status"/>
+                        </Record>
+>>>>>>> Stashed changes
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__UI.HeaderInfo">
@@ -2520,6 +3988,12 @@
                         <Record Type="SAP__UI.DataField">
                             <PropertyValue Property="Value" Path="NumberOfStatusMessages"/>
                         </Record>
+<<<<<<< Updated upstream
+=======
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="LogHandle"/>
+                        </Record>
+>>>>>>> Stashed changes
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__UI.LineItem">
@@ -2559,6 +4033,13 @@
                         <Record Type="SAP__UI.DataField">
                             <PropertyValue Property="Value" Path="NumberOfStatusMessages"/>
                         </Record>
+<<<<<<< Updated upstream
+=======
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="LogHandle"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Low"/>
+                        </Record>
+>>>>>>> Stashed changes
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__UI.PresentationVariant" Qualifier="DefaultJobSort">
@@ -2584,12 +4065,116 @@
                     <Record/>
                 </Annotation>
             </Annotations>
+<<<<<<< Updated upstream
             <Annotations Target="SAP__self.Container/Logs">
+=======
+            <Annotations Target="SAP__self.LogMessagesType/MessageNumber">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Message Number"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Message Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/DetailLevel">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Level of Detail"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Level of detail"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/Type">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Message Type"/>
+                <Annotation Term="SAP__common.Heading" String="Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/ContextField1">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Context Data"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Context Data"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/ContextField2">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Context Data"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Context Data"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/ContextField3">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Context Data"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Context Data"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/ContextField4">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Context Data"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Context Data"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/ContextField5">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Context Data"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Context Data"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/FilterFieldName">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Filter Field Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Filter Field Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/FilterFieldValue">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Filter Field Value"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Filter Field Value"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType">
+                <Annotation Term="SAP__common.Label" String="Custom Entity - Application Log Messages"/>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="MessageNumber"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Timestamp"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="DetailLevel"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Status"/>
+                            <PropertyValue Property="Criticality" Path="Criticality"/>
+                            <PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithIcon"/>
+                            <PropertyValue Property="Value" Path="TypeText"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Text"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/LogMessages">
+>>>>>>> Stashed changes
                 <Annotation Term="SAP__capabilities.SearchRestrictions">
                     <Record>
                         <PropertyValue Property="Searchable" Bool="false"/>
                     </Record>
                 </Annotation>
+<<<<<<< Updated upstream
+=======
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="TypeText"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>TypeText</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+>>>>>>> Stashed changes
                 <Annotation Term="SAP__capabilities.InsertRestrictions">
                     <Record>
                         <PropertyValue Property="Insertable" Bool="false"/>
@@ -2614,6 +4199,7 @@
                     <Collection/>
                 </Annotation>
             </Annotations>
+<<<<<<< Updated upstream
             <Annotations Target="SAP__self.LogsType/LogHandle">
                 <Annotation Term="SAP__common.SemanticObject" String="ApplicationLog"/>
                 <Annotation Term="SAP__common.Label" String="Handle"/>
@@ -2968,6 +4554,377 @@
                 <Annotation Term="SAP__common.Label" String="Ctrl.ação dinâmica"/>
                 <Annotation Term="SAP__common.Heading" String="Controle de ação dinâmica"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Propriedade de ação dinâmica"/>
+=======
+            <Annotations Target="SAP__self.AcctgDocItemType/ClearingDate">
+                <Annotation Term="SAP__common.Label" String="Clearing Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ClearingCreationDate">
+                <Annotation Term="SAP__common.Label" String="Clrg Creation Date"/>
+                <Annotation Term="SAP__common.Heading" String="Clearing Creation Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Clearing Creation Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxRateValidityStartDate">
+                <Annotation Term="SAP__common.Label" String="Tax Rate Validity Start Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ValueDate">
+                <Annotation Term="SAP__common.Label" String="Value date"/>
+                <Annotation Term="SAP__common.Heading" String="Value Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AssignmentReference">
+                <Annotation Term="SAP__common.Label" String="Assignment Reference"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DocumentItemText">
+                <Annotation Term="SAP__common.Label" String="Item Text"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AssetValueDate">
+                <Annotation Term="SAP__common.Label" String="Asset Value Date"/>
+                <Annotation Term="SAP__common.Heading" String="AssetValDate"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsSalesRelated">
+                <Annotation Term="SAP__common.Label" String="Is Sales Related"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/LineItemDisplayIsEnabled">
+                <Annotation Term="SAP__common.Label" String="Line Item Display Enabled"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Indicator: Can Line Items Be Displayed by Account?"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/AddressAndBankIsSetManually">
+                <Annotation Term="SAP__common.Label" String="Address and Bank is Set Manually"/>
+                <Annotation Term="SAP__common.Heading" String="Address and Bank Data is Set Manually"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Address and Bank Data is Set Manually"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DownPaymentIsNetProcedure">
+                <Annotation Term="SAP__common.Label" String="Indicator: Down Payment in Net Procedure?"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsNotCashDiscountLiable">
+                <Annotation Term="SAP__common.Label" String="Is Not Cash Discount Liable"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsAutomaticallyCreated">
+                <Annotation Term="SAP__common.Label" String="Is Automatically Created"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsUsedInPaymentTransaction">
+                <Annotation Term="SAP__common.Label" String="Is Used In Payment Transaction"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsBalanceSheetAccount">
+                <Annotation Term="SAP__common.Label" String="Is Balance Sheet Account"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/SpecialGLAccountAssignment">
+                <Annotation Term="SAP__common.Label" String="Special G/L Assignmt"/>
+                <Annotation Term="SAP__common.Heading" String="Special G/L Assignment"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Assignment Number for Special G/L Accounts"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DueCalculationBaseDate">
+                <Annotation Term="SAP__common.Label" String="Due Calculation Base Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscount1Days">
+                <Annotation Term="SAP__common.Label" String="Cash Discount Days 1"/>
+                <Annotation Term="SAP__common.Heading" String="CD1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscount2Days">
+                <Annotation Term="SAP__common.Label" String="Cash Discount Days 2"/>
+                <Annotation Term="SAP__common.Heading" String="CD2"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/NetPaymentDays">
+                <Annotation Term="SAP__common.Label" String="Days Net"/>
+                <Annotation Term="SAP__common.Heading" String="Net"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Net Payment Terms Period"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscount1Percent">
+                <Annotation Term="SAP__common.Label" String="Disc. Percent 1"/>
+                <Annotation Term="SAP__common.Heading" String="Disc.1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Cash Discount Percentage 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscount2Percent">
+                <Annotation Term="SAP__common.Label" String="Disc. Percent 2"/>
+                <Annotation Term="SAP__common.Heading" String="Disc.2"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Cash Discount Percentage 2"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ZZBoEDueDate">
+                <Annotation Term="SAP__common.Label" String="Return Before"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Bill of Exchange Payment Request Due Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/LastDunningDate">
+                <Annotation Term="SAP__common.Label" String="Last Dunned"/>
+                <Annotation Term="SAP__common.Heading" String="Dunned"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Date of Last Dunning Notice"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsCompletelyDelivered">
+                <Annotation Term="SAP__common.Label" String="Is completely delivered"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/SettlementReferenceDate">
+                <Annotation Term="SAP__common.Label" String="Reference Date"/>
+                <Annotation Term="SAP__common.Heading" String="Ref Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Reference Date for Settlement"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsEUTriangularDeal">
+                <Annotation Term="SAP__common.Label" String="Is EU Triangular Deal"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ClearingIsReversed">
+                <Annotation Term="SAP__common.Label" String="Clearing Is Reversed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/IsNegativePosting">
+                <Annotation Term="SAP__common.Label" String="Is Negative Posting"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/HasPaymentOrder">
+                <Annotation Term="SAP__common.Label" String="Payment Sent"/>
+                <Annotation Term="SAP__common.Heading" String="PS"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Indicator: Payment Order Exists for this Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/TaxDeterminationDate">
+                <Annotation Term="SAP__common.Label" String="Tx Determination Dte"/>
+                <Annotation Term="SAP__common.Heading" String="Tax Determination Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Date for Determination of Tax Rates"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/ClearingItem">
+                <Annotation Term="SAP__common.Label" String="Clearing Item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CustomerIsInExecution">
+                <Annotation Term="SAP__common.Label" String="Customer Is In Execution"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PaymentRefByPaytSrvcProvider">
+                <Annotation Term="SAP__common.Label" String="Reference by PSP"/>
+                <Annotation Term="SAP__common.Heading" String="Payment Reference by Payment Service Provider"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Payment Reference by Payment Service Provider"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/PostingDate">
+                <Annotation Term="SAP__common.Label" String="Posting Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/DocumentDate">
+                <Annotation Term="SAP__common.Label" String="Journal Entry Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/NetDueDate">
+                <Annotation Term="SAP__common.Label" String="Net Due Date"/>
+                <Annotation Term="SAP__common.Heading" String="Due on"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Due Date for Net Payment"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscount1DueDate">
+                <Annotation Term="SAP__common.Label" String="Cash Disc 1 Due Date"/>
+                <Annotation Term="SAP__common.Heading" String="Disc.1 Due"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Due Date for Cash Discount 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/CashDiscount2DueDate">
+                <Annotation Term="SAP__common.Label" String="Cash Disc 2 Due Date"/>
+                <Annotation Term="SAP__common.Heading" String="C/disc. 2"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Cash Discount 2 Due Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/JointVentureProductionDate">
+                <Annotation Term="SAP__common.Label" String="Joint Venture Production Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/OplAcctgDocItmCntrySpcfcRef1">
+                <Annotation Term="SAP__common.Label" String="Country/Region Specific Reference 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Country/Region Specific Reference 1 on line item"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/NumberOfItems">
+                <Annotation Term="SAP__common.Label" String="Number of Items"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/fb09Baixa">
+                <Annotation Term="SAP__common.Label" String="Truth Value"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Truth Value: True/False"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/fb09Ref3">
+                <Annotation Term="SAP__common.Label" String="Truth Value"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Truth Value: True/False"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/__OperationControl/fb09Baixa">
+                <Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemType/__OperationControl/fb09Ref3">
+                <Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/StepNumber">
+                <Annotation Term="SAP__common.Label" String="Step no."/>
+                <Annotation Term="SAP__common.Heading" String="Job step ID number."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Job step ID number."/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ScheduleStartDate">
+                <Annotation Term="SAP__common.Label" String="Start Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Scheduled start date for background job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ScheduleStartTime">
+                <Annotation Term="SAP__common.Label" String="Start Time"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Scheduled start time for background Job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/TargetSystem">
+                <Annotation Term="SAP__common.Label" String="Tgt System for Job"/>
+                <Annotation Term="SAP__common.Heading" String="Target System for Background Job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Target System to Run Background Job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ScheduleDate">
+                <Annotation Term="SAP__common.Label" String="Schedule date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Date of job/step scheduling"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ScheduleTime">
+                <Annotation Term="SAP__common.Label" String="Schedule date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Time of a scheduled job/step"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/LastChangeDate">
+                <Annotation Term="SAP__common.Label" String="Last job change"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Date of last job change"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/LastChangeTime">
+                <Annotation Term="SAP__common.Label" String="Last job change"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Time of last job change"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ReleaseDate">
+                <Annotation Term="SAP__common.Label" String="Scheduled release"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Release Date for Background Scheduling"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ReleaseTime">
+                <Annotation Term="SAP__common.Label" String="Scheduled release"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Release time of scheduled background job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ExecutionStartDate">
+                <Annotation Term="SAP__common.Label" String="Execution Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Job start date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ExecutionStartTime">
+                <Annotation Term="SAP__common.Label" String="Execution Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Batch Job Start Time"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ExecutionEndDate">
+                <Annotation Term="SAP__common.Label" String="Execution Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Job start date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ExecutionEndTime">
+                <Annotation Term="SAP__common.Label" String="Execution Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Batch Job Start Time"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/StatusText">
+                <Annotation Term="SAP__common.Label" String="Short Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Short Text for Fixed Values"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/AuthorizationCheck">
+                <Annotation Term="SAP__common.Label" String="Authorization check"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Background client for authorization check"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/SuccessorJobNumber">
+                <Annotation Term="SAP__common.Label" String="Successor job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Number of successor job(s)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/PredecessorJobNumber">
+                <Annotation Term="SAP__common.Label" String="Previous job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Number of previous jobs"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/LatestStartDate">
+                <Annotation Term="SAP__common.Label" String="Latest Date"/>
+                <Annotation Term="SAP__common.Heading" String="Latest Execution Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Latest Execution Date for a Background Job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/LatestStartTime">
+                <Annotation Term="SAP__common.Label" String="Latest Time"/>
+                <Annotation Term="SAP__common.Heading" String="Latest Execution Time"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Latest Execution Time for Background Job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/WorkProcessNumber">
+                <Annotation Term="SAP__common.Label" String="Work process number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/WorkProcessID">
+                <Annotation Term="SAP__common.Label" String="Work process ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/BackgroundEventParameter">
+                <Annotation Term="SAP__common.Label" String="Bkgrd event param."/>
+                <Annotation Term="SAP__common.Heading" String="Bkgrd event parameters"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Background Event Parameters (Such as, Jobname/Jobcount)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/TargetSystemReactive">
+                <Annotation Term="SAP__common.Label" String="Tgt System for Job"/>
+                <Annotation Term="SAP__common.Heading" String="Target System for Background Job"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Target System to Run Background Job"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/JobPriority">
+                <Annotation Term="SAP__common.Label" String="Job priority"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ExecutionServer">
+                <Annotation Term="SAP__common.Label" String="Server"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Server Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/MonthEndCorrection">
+                <Annotation Term="SAP__common.Label" String="Correction job exec."/>
+                <Annotation Term="SAP__common.Heading" String="Correction Field - Job Execution"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Correction field for calc. job execution (end-of-mth, cal.)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/CalendarCorrection">
+                <Annotation Term="SAP__common.Label" String="Correction job exec."/>
+                <Annotation Term="SAP__common.Heading" String="Correction Field - Job Execution"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Correction field for calc. job execution (end-of-mth, cal.)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/ReactiveServer">
+                <Annotation Term="SAP__common.Label" String="Server"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Server Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.JobStatusType/RecoverObjectKey">
+                <Annotation Term="SAP__common.Label" String="Key"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Object key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/LogHandle">
+                <Annotation Term="SAP__common.Label" String="Handle"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Log Handle"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogExternalID">
+                <Annotation Term="SAP__common.Label" String="External ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: External ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogDateTime">
+                <Annotation Term="SAP__common.Label" String="Time Stamp"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogDate">
+                <Annotation Term="SAP__common.Label" String="Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application log: date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogTime">
+                <Annotation Term="SAP__common.Label" String="Time"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application log: time"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogChangedDateTime">
+                <Annotation Term="SAP__common.Label" String="Changed at"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Time at which object was last changed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogChangedDate">
+                <Annotation Term="SAP__common.Label" String="Changed on"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Date of last change"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogChangedTime">
+                <Annotation Term="SAP__common.Label" String="Changed at"/>
+                <Annotation Term="SAP__common.Heading" String="Chngd at"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Time of last change"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogsType/ApplicationLogExpiryDate">
+                <Annotation Term="SAP__common.Label" String="Expiration Date"/>
+                <Annotation Term="SAP__common.Heading" String="Expry.date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log: Expiration Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/LogHandle">
+                <Annotation Term="SAP__common.Label" String="Log Handle"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Handle"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/Timestamp">
+                <Annotation Term="SAP__common.Label" String="Time Stamp"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/HasLongText">
+                <Annotation Term="SAP__common.Label" String="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/HasDetailText">
+                <Annotation Term="SAP__common.Label" String="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LogMessagesType/TypeText">
+                <Annotation Term="SAP__common.Label" String="Severity"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Application Log Message Type Text"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemOperationControl/fb09Baixa">
+                <Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AcctgDocItemOperationControl/fb09Ref3">
+                <Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+>>>>>>> Stashed changes
             </Annotations>
         </Schema>
     </edmx:DataServices>
